@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ announcement.title }}</h2>
+<p>{{ announcement.summary }}</p>
+
+{% if announcement.content|length > 100 %}
+  <!-- Truncated preview -->
+  <p id="shortContent">
+    {{ announcement.content|slice:":100" }}...
+  </p>
+
+  <!-- Full content hidden by default -->
+  <p id="fullContent" style="display:none;">
+    {{ announcement.content }}
+  </p>
+
+  <!-- Toggle button -->
+  <button id="toggleBtn" onclick="toggleContent()">Read more</button>
+{% else %}
+  <!-- If short, just show full content -->
+  <p>{{ announcement.content }}</p>
+{% endif %}
+
+<script>
+function toggleContent() {
+  const shortContent = document.getElementById("shortContent");
+  const fullContent = document.getElementById("fullContent");
+  const btn = document.getElementById("toggleBtn");
+
+  if (fullContent.style.display === "none") {
+    shortContent.style.display = "none";
+    fullContent.style.display = "block";
+    btn.textContent = "Show less";
+  } else {
+    shortContent.style.display = "block";
+    fullContent.style.display = "none";
+    btn.textContent = "Read more";
+  }
+}
+</script>
+{% endblock %}

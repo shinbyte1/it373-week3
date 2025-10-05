@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}My Site{% endblock title %}</title>
+</head>
+<body>
+    <header>
+        <h1>{% block header %}Welcome to My Site{% endblock header %}</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'announcements' %}">Announcements</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        <p>This is the default content.</p>
+        {% endblock content %}
+    </main>
+    <footer>
+        <p>&copy; 2023 My Site</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Announcements</h1>
+<ul>
+  {% for announcement in announcements %}
+    <li>
+      <h3>{{ announcement.title }}</h3>
+      <p class="short-text">
+        {{ announcement.content|slice:":100" }}...
+      </p>
+      <a href="{% url 'detail' announcement.id %}" class="read-more-link">
+        Read More
+      </a>
+    </li>
+  {% endfor %}
+</ul>
+{% endblock %}
